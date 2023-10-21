@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\profile\AvatarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use OpenAI\Laravel\Facades\OpenAI;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/profile/avatar', [AvatarController::class, 'upload'])->name('profile.avatar');
+
 });
 
+
+
 require __DIR__.'/auth.php';
+
+
+Route::get('/openai',function(){
+    $result = OpenAI::completions()->create([
+        'model' => 'text-davinci-003',
+        'prompt' => 'PHP is',
+    ]);
+    
+    echo $result['choices'][0]['text']; // an open-source, widely-used, server-side scripting language.
+    
+});

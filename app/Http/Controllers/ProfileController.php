@@ -37,6 +37,10 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    public function upload(Request $request){
+        print_R($request);exit;
+    }
+
     /**
      * Delete the user's account.
      */
