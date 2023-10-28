@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\profile\AvatarController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 use OpenAI\Laravel\Facades\OpenAI;
 
@@ -45,4 +46,8 @@ Route::get('/openai',function(){
     
     echo $result['choices'][0]['text']; // an open-source, widely-used, server-side scripting language.
     
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('/ticket',TicketController::class);
 });

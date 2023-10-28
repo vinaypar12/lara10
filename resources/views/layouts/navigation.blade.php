@@ -16,7 +16,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                
             </div>
+            <!-- ticket link -->
+            <div class="flex flex-col justify-center ">
+                    <a href="{{route('ticket.create')}}" class="ml-3 rounded-lg bg-white p-2">
+                        {{ __('Support Ticket') }}
+                    </a>
+                </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
